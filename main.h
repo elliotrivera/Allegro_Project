@@ -13,15 +13,13 @@
 #include "font.h"
 
 static Game *FGame = new Game();
-Game * GetGame() { return FGame; }
+FGame* GetGame();
 static Window *FWindow = new Window();
-Window * GetWindow() { return FWindow; }
+//Window * GetWindow() { return FWindow; }
 static Font *FFont = new Font();
-Font * GetFont() { return FFont; }
+//Font * GetFont() { return FFont; }
 
 static ALLEGRO_DISPLAY *display = NULL;
-ALLEGRO_DISPLAY * GetDisplay() { return display; }
 static ALLEGRO_FONT *font = NULL;
-ALLEGRO_FONT * GetBufferFont() { return font; }
 
 //Game* GetGame();
