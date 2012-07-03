@@ -13,7 +13,7 @@
 #include "font.h"
 
 static Game *FGame = new Game();
-FGame* GetGame();
+Game * GetGame() { return FGame; }
 static Window *FWindow = new Window();
 //Window * GetWindow() { return FWindow; }
 static Font *FFont = new Font();
