@@ -3,40 +3,53 @@
 
 using namespace std;
 
-void UpdateScreen()
-{
-
-}
-
 int main()
 {
-	if (!FGame->Init())
+	bool render = false;
+
+	if (!GetGame()->Init())
 	{
 		cout << "ERROR: " << "failed to Initalize." << endl;
 		FGame->ShutDown();
 	}
-	else if(FGame->Init())
+	else if(GetGame()->Init())
 	{
 		cout << "Engine initalized successfully." << endl;
 	}
 
 	FWindow->MakeWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
-	FFont->LoadFont("C:\\data\\fonts\\AmericanUncDRegular.ttf", 12, 0);
+	GetFont()->LoadFont("C:\\data\\fonts\\AmericanUncDRegular.ttf", 12, 0);
 
 	al_clear_to_color(al_map_rgb(0,0,0)); // Backbuffer color
 	//font = al_load_ttf_font("C:\\data\\fonts\\AmericanUncDRegular.ttf", 12, 0);
 
-	while(FGame && FGame->PAUSE == false)
+	double fps = 0;
+	int frames_done = 0;
+	double old_time = al_get_time();
+
+	while(GetGame() && GetGame()->PAUSE == false)
 	{
-		FWindow->FlipDisplay();
-		if (font)
-		{
-			al_draw_text(font, al_map_rgb (255, 255, 255), 850, 0, ALLEGRO_ALIGN_CENTRE, "FPS");
-		}
-		else
-		{
-			cout << "FONT not loaded.shit" << endl;
-		}
+		render = true;
+
+			double game_time = al_get_time();
+			if(game_time - old_time >= 1.0)
+			{
+				fps = frames_done / (game_time - old_time);
+				frames_done = 0;
+				old_time = game_time;
+			}
+
+			frames_done++;
+
+			if(render)
+			{
+				render = false;
+
+				al_draw_textf(GetFont()->GetFont(), al_map_rgb(255, 255, 255), 850, 5, 0, "FPS: %f", fps);
+
+				GetWindow()->FlipDisplay();
+			}
+
 	}
 
 	getchar();

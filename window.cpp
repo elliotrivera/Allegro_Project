@@ -28,6 +28,7 @@ void Window::MakeWindow(int width, int height)
 void Window::FlipDisplay()
 {
 	al_flip_display();
+	al_clear_to_color(al_map_rgb(0,0,0));
 }
 
 void Window::DeleteWindow()

@@ -2,6 +2,31 @@
 
 using namespace std;
 
+ALLEGRO_DISPLAY * GetDisplay()
+{
+	return display;
+}
+
+/*ALLEGRO_FONT * GetFontBuffer()
+{
+	return font;
+}*/
+
+Game * GetGame() 
+{ 
+	return FGame; 
+}
+
+Window * GetWindow()
+{
+	return FWindow;
+}
+
+Font * GetFont()
+{
+	return FFont;
+}
+
 bool Game::Init()
 {
 
@@ -33,7 +58,8 @@ void Game::InitKeyboard()
 void Game::ShutDown()
 {
 	delete this;
-	delete FWindow;
+	delete GetWindow();
+	delete GetFont();
 }
 
 Game::~Game()
