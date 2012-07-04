@@ -12,6 +12,7 @@
 #include "game.h"
 #include "window.h"
 #include "font.h"
+#include "wrapper.h"
 
 static Game *FGame = new Game();
 Game * GetGame();
@@ -19,6 +20,8 @@ static Window *FWindow = new Window();
 Window * GetWindow();
 static Font *FFont = new Font();
 Font * GetFont();
+static FpsCounter * F_FpsCounter = new FpsCounter();
+FpsCounter * GetCounter();
 
 static ALLEGRO_DISPLAY *display = NULL;
 ALLEGRO_DISPLAY * GetDisplay();

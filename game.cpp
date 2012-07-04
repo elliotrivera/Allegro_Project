@@ -12,6 +12,11 @@ ALLEGRO_DISPLAY * GetDisplay()
 	return font;
 }*/
 
+FpsCounter * GetCounter()
+{
+	return F_FpsCounter;
+}
+
 Game * GetGame() 
 { 
 	return FGame; 
